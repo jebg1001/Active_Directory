@@ -13,15 +13,17 @@ namespace Active_Directory.Controllers
     public class ListaController : Controller
     {
         private readonly ILogger<ListaController> _logger;
+        private readonly MyDatabaseContext _context;
 
-        public ListaController(ILogger<ListaController> logger)
+        public ListaController(ILogger<ListaController> logger, MyDatabaseContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Alumnos.ToListAsync());
         }
 
         public IActionResult Privacy()
