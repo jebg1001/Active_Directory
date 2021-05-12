@@ -10,20 +10,18 @@ using Active_Directory.Models;
 
 namespace Active_Directory.Controllers
 {
-    public class HomeController : Controller
+    public class ListaController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly MyDatabaseContext _context;
+        private readonly ILogger<ListaController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, MyDatabaseContext context)
+        public ListaController(ILogger<ListaController> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Alumnos.ToListAsync());
+            return View();
         }
 
         public IActionResult Privacy()

@@ -31,6 +31,9 @@ namespace Active_Directory
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
+
             services.AddControllersWithViews(options =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -38,8 +41,8 @@ namespace Active_Directory
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
-            services.AddDbContext<MyDatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            //services.AddDbContext<MyDatabaseContext>(options =>
+                //options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
             services.AddRazorPages()
                 .AddMicrosoftIdentityUI();
         }
@@ -69,7 +72,7 @@ namespace Active_Directory
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Lista}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
