@@ -14,5 +14,6 @@ namespace Active_Directory.Models
         }
 
         public DbSet<Active_Directory.Models.Alumno> Alumnos { get; set; }
+        public DbSet<Active_Directory.Models.Profesor> Profesores { get; set; }
     }
 }

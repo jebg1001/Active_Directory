@@ -45,6 +45,27 @@ namespace Active_Directory.Migrations
 
                     b.ToTable("Alumnos");
                 });
+
+            modelBuilder.Entity("Active_Directory.Models.Profesor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Hora")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Profesores");
+                });
 #pragma warning restore 612, 618
         }
     }

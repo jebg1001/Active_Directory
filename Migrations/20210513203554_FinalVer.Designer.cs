@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Active_Directory.Migrations
 {
     [DbContext(typeof(MyDatabaseContext))]
-    [Migration("20210512160112_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210513203554_FinalVer")]
+    partial class FinalVer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,27 @@ namespace Active_Directory.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Alumnos");
+                });
+
+            modelBuilder.Entity("Active_Directory.Models.Profesor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Hora")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Profesores");
                 });
 #pragma warning restore 612, 618
         }

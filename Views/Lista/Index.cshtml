@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<Active_Directory.Models.Alumno>;
+﻿ @model dynamic;
 
   <section id="hero2" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
@@ -14,6 +14,29 @@
     <table class="table" >
       <thead>
         <tr style="background-color: #910222;">
+          <th style="color: white;" scope="col">ID</th>
+          <th style="color: white;" scope="col">Nombre</th>
+          <th style="color: white;" scope="col">Correo Institucional</th>
+          <th style="color: white;" scope="col">Hora de logueo</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Profesor prof in @Model.Profesores)
+        {
+          <tr>
+            <th scope="row">@prof.ID</th>
+            <td>@prof.Name</td>
+            <td>@prof.Username</td>
+            <td>@prof.Hora</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table class="table" >
+      <thead>
+        <tr style="background-color: #910222;">
           <th style="color: white;" scope="col">Código Estudiante</th>
           <th style="color: white;" scope="col">Nombres</th>
           <th style="color: white;" scope="col">Apellidos</th>
@@ -23,7 +46,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach (Alumno alu in @Model)
+        @foreach (Alumno alu in @Model.Alumnos)
         {
           <tr>
             <th scope="row">@alu.ID</th>

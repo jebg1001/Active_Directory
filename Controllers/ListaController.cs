@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Diagnostics;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,7 +24,19 @@ namespace Active_Directory.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Alumnos.ToListAsync());
+            var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
+            Profesor prof = new Profesor();
+            prof.Name =userClaims?.FindFirst("name")?.Value;
+            prof.Username= userClaims?.FindFirst("preferred_username")?.Value;
+            prof.Hora=DateTime.Now;
+            await _context.Profesores.AddAsync(prof);  
+            await _context.SaveChangesAsync();
+
+            dynamic model = new ExpandoObject(); 
+            model.Alumnos= await _context.Alumnos.ToListAsync();
+            model.Profesores = await _context.Profesores.ToListAsync();
+
+            return View(model);
         }
 
         public IActionResult Privacy()
