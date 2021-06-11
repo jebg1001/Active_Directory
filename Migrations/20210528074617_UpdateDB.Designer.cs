@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Active_Directory.Migrations
 {
     [DbContext(typeof(MyDatabaseContext))]
-    [Migration("20210513203554_FinalVer")]
-    partial class FinalVer
+    [Migration("20210528074617_UpdateDB")]
+    partial class UpdateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,14 +28,8 @@ namespace Active_Directory.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Apellidos")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombres")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Var1")
                         .HasColumnType("float");

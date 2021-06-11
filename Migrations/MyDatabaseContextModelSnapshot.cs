@@ -26,14 +26,8 @@ namespace Active_Directory.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Apellidos")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombres")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Var1")
                         .HasColumnType("float");

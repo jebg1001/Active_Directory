@@ -41,8 +41,8 @@ namespace Active_Directory
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
-            services.AddDbContext<MyDatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            //services.AddDbContext<MyDatabaseContext>(options =>
+                //options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
             services.AddRazorPages()
                 .AddMicrosoftIdentityUI();
         }
